@@ -1,28 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import './ChatSidebar.css';
 
+
 const ChatSidebar = ({ chats, activeChatId, onSelectChat, onNewChat, open }) => {
-  const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    try {
-      await axios.post('http://localhost:3000/auth/logout', {}, { withCredentials: true });
-      navigate('/login');
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
-  };
 
+  
   return (
     <aside className={"chat-sidebar " + (open ? 'open' : '')} aria-label="Previous chats">
       <div className="sidebar-header">
         <h2>Chats</h2>
-        <div className="sidebar-header-buttons">
-          <button className="small-btn" onClick={onNewChat}>New</button>
-          <button className="small-btn logout-btn" onClick={handleLogout}>Logout</button>
-        </div>
+        <button className="small-btn" onClick={onNewChat}>New</button>
       </div>
       <nav className="chat-list" aria-live="polite">
         {chats.map(c => (
