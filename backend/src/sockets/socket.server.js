@@ -10,7 +10,7 @@ const { createMemory, queryMemory } = require("../services/vector.service");
 function initSocketServer(httpServer) {
   const io = new Server(httpServer, {
     cors: {
-      origin: "http://localhost:5173",
+      origin: process.env.NODE_ENV === 'production' ? "https://chat-app-u7gk.onrender.com" : "http://localhost:5173",
       credentials: true,
     },
   });
