@@ -24,7 +24,7 @@ const Register = () => {
 
     axios
       .post(
-        "https://chat-app-u7gk.onrender.com/auth/register",
+        "/auth/register",
         {
           email: form.email,
           fullName: {

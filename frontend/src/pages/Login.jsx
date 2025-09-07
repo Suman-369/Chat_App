@@ -20,7 +20,7 @@ const Login = () => {
 
     axios
       .post(
-        "https://chat-app-u7gk.onrender.com/auth/login",
+        "/auth/login",
         {
           email: form.email,
           password: form.password,

@@ -50,7 +50,7 @@ const Home = () => {
     if (!title) return;
 
     const response = await axios.post(
-      "https://chat-app-u7gk.onrender.com/chat",
+      "/chat",
       {
         title,
       },
@@ -66,7 +66,7 @@ const Home = () => {
   // Ensure at least one chat exists initially
   useEffect(() => {
     axios
-      .get("https://chat-app-u7gk.onrender.com/chat", { withCredentials: true })
+      .get("/chat", { withCredentials: true })
       .then((response) => {
         const chats = response.data.chats.reverse();
         dispatch(setChats(chats));
@@ -77,7 +77,7 @@ const Home = () => {
         }
       });
 
-    const tempSocket = io("https://chat-app-u7gk.onrender.com", {
+    const tempSocket = io("/", {
       withCredentials: true,
     });
 
@@ -134,7 +134,7 @@ const Home = () => {
 
   const getMessages = async (chatId) => {
     const response = await axios.get(
-      `https://chat-app-u7gk.onrender.com/chat/messages/${chatId}`,
+      `/chat/messages/${chatId}`,
       { withCredentials: true }
     );
 
